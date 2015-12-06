@@ -6,6 +6,7 @@ var ReactDOM = require('react-dom'),
 
 if (typeof window !== 'undefined') {
 	window.onload = function () {
-		ReactDOM.render( < div className = "main" > < Header /> < Content /> < Footer /> </div> , document.getElementsByTagName('body')[0]);
+		ReactDOM.render( < div className="app"> < div className = "main" > < Header /> < Content /> < /div>< Footer /> < /div> ,
+		document.getElementsByClassName('react-app')[0]);
 		}
 	}

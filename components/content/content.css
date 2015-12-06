@@ -1,6 +1,4 @@
 .content {
-	box-sizing: border-box;
-	min-height: 100%;
-	padding-bottom: 90px;
 	background: #e7e7e7;
+	padding: 48px 15px 47px;
 }

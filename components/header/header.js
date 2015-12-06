@@ -17,8 +17,8 @@ var Header = React.createClass({
 	//		return;
 	//	},
 	render: function () {
-		return ( < div className = "header" >
-			< div className = "games-menu" > Games < /div> < /div > );
+		return ( < header className = "header" >
+			< div className = "games-menu" > Games < /div> < /header > );
 	}
 });
 
