@@ -38,6 +38,11 @@ gulp.task('css', function () {
 		.pipe(gulp.dest('./build/css'));
 });
 
+gulp.task('fonts', function () {
+	return gulp.src('fonts/*')
+		.pipe(gulp.dest('./build/fonts'));
+});
+
 gulp.task('clean', function () {
 	return gulp.src('./build')
 		.pipe(vinylPaths(clean));
@@ -46,6 +51,40 @@ gulp.task('clean', function () {
 gulp.task('default', ['scripts', 'watch']);
 
 gulp.task('build', ['clean'], function () {
-	gulp.start('scripts', 'css', 'templates');
+	gulp.start('scripts', 'css', 'fonts', 'templates');
 	gutil.log('tasks is completed');
+});
+
+gulp.task('iconfont', function () {
+	var iconfont = require('gulp-iconfont');
+	var svgmin = require('gulp-svgmin'),
+		iconFontConfig = {
+			codepoints: {
+				community: 0xE000
+			},
+			fontName: 'icons',
+			appendUnicode: false,
+			formats: ['ttf', 'woff'],
+			normalize: true,
+			fontHeight: 512,
+			descent: 64,
+			centerHorizontally: true,
+			round: '10e12'
+		};
+
+	iconFontConfig.timestamp = Math.round(Date.now() / 1000);
+	iconFontConfig.metadataProvider = function (file, callback) {
+		var metadata = {};
+		metadata.path = file;
+		metadata.name = path.basename(file).replace(path.extname(file), '');
+		metadata.unicode = [String.fromCharCode(iconFontConfig.codepoints[metadata.name])];
+		setImmediate(function () {
+			callback(null, metadata);
+		});
+	};
+	return gulp.src(['images/*.svg'])
+		.pipe(svgmin())
+		.pipe(iconfont(iconFontConfig))
+		//		.pipe(plugin(iconFontConfig))
+		.pipe(gulp.dest('./build/fonts'));
 });

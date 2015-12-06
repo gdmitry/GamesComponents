@@ -1,0 +1,22 @@
+.header {
+	height: 47px;
+	background: #f6f6f6;
+	font-family: 'WeblySleek UI Semibold';
+}
+
+.games-menu {
+	position: relative;
+	padding-left: 1.25em;
+	color: #767993;
+}
+
+.games-menu:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.25em;
+	width: 23px;
+	height: 3px;
+	background: #767993;
+	box-shadow: 0 6px 0 0 #767993, 0 12px 0 0 #767993;
+}
