@@ -25,14 +25,9 @@
 }
 
 .games-menu:before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0.25em;
-	width: 23px;
-	height: 3px;
-	background: #767993;
-	box-shadow: 0 6px 0 0 #767993, 0 12px 0 0 #767993;
+	content: "\E001";
+	font-family: 'icons';
+	font-size: 22px;
 }
 /* Eric Meyer's CSS Reset */
 
@@ -200,6 +195,11 @@ body {
 @font-face {
 	font-family: 'WeblySleek UI Semibold';
 	src: url('../fonts/weblysleekuisb.ttf') format('truetype'), url('../fonts/weblysleekuisb.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'icons';
+	src: url('../fonts/icons.ttf') format('truetype'), url('../fonts/icons.woff') format('woff');
 }
 
 html,

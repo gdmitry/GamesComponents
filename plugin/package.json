@@ -1,0 +1,14 @@
+{
+  "name": "plugin",
+  "version": "1.0.0",
+  "author": {
+    "name": "Sigma"
+  },
+  "private": true,
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "underscore.string": "~2.4.0",
+    "readable-stream": "^2.0.2",
+    "glob": "~4.3.1"
+  }
+}

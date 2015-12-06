@@ -166,6 +166,11 @@ body {
 	src: url('../fonts/weblysleekuisb.ttf') format('truetype'), url('../fonts/weblysleekuisb.woff') format('woff');
 }
 
+@font-face {
+	font-family: 'icons';
+	src: url('../fonts/icons.ttf') format('truetype'), url('../fonts/icons.woff') format('woff');
+}
+
 html,
 body,
 .react-app,

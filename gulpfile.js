@@ -4,9 +4,11 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	vinylPaths = require('vinyl-paths'),
 	clean = require('del'),
+	path = require('path'),
 	gutil = require('gulp-util'),
 	rename = require('gulp-rename'),
-	concat = require('gulp-concat');
+	concat = require('gulp-concat'),
+	plugin = require('./plugin/tasks/plugin');
 
 
 gulp.task('scripts', function () {
@@ -51,7 +53,7 @@ gulp.task('clean', function () {
 gulp.task('default', ['scripts', 'watch']);
 
 gulp.task('build', ['clean'], function () {
-	gulp.start('scripts', 'css', 'fonts', 'templates');
+	gulp.start('scripts', 'css', 'fonts', 'iconfont', 'templates');
 	gutil.log('tasks is completed');
 });
 
@@ -60,7 +62,10 @@ gulp.task('iconfont', function () {
 	var svgmin = require('gulp-svgmin'),
 		iconFontConfig = {
 			codepoints: {
-				community: 0xE000
+				community: 0xE000,
+				games: 0xE001,
+				play: 0xE002,
+				search: 0xE003
 			},
 			fontName: 'icons',
 			appendUnicode: false,
@@ -85,6 +90,6 @@ gulp.task('iconfont', function () {
 	return gulp.src(['images/*.svg'])
 		.pipe(svgmin())
 		.pipe(iconfont(iconFontConfig))
-		//		.pipe(plugin(iconFontConfig))
+		.pipe(plugin(iconFontConfig))
 		.pipe(gulp.dest('./build/fonts'));
 });

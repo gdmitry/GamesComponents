@@ -12,12 +12,7 @@
 }
 
 .games-menu:before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0.25em;
-	width: 23px;
-	height: 3px;
-	background: #767993;
-	box-shadow: 0 6px 0 0 #767993, 0 12px 0 0 #767993;
+	content: "\E001";
+	font-family: 'icons';
+	font-size: 22px;
 }

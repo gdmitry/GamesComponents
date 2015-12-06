@@ -23,6 +23,9 @@
 		"react": "~0.14.2",
 		"react-dom": "~0.14.2",
 		"jquery": "2.1.4",
-		"marked": "0.3.5"
+		"lodash": "~2.4.1",
+		"underscore.string": "~2.4.0",
+		"readable-stream": "^2.0.2",
+		"glob": "~4.3.1"
 	}
 }
