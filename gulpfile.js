@@ -53,7 +53,7 @@ gulp.task('clean', function () {
 gulp.task('default', ['scripts', 'watch']);
 
 gulp.task('build', ['clean'], function () {
-	gulp.start('scripts', 'css', 'fonts', 'iconfont', 'templates');
+	gulp.start('scripts', 'css', 'fonts', 'templates');
 	gutil.log('tasks is completed');
 });
 

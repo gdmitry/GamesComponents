@@ -1,34 +1,18 @@
 .content {
+	position: relative;
 	background: #e7e7e7;
-	padding: 48px 15px 47px;
+	padding: 0 15px 47px;
 }
 
-.footer {
-	width: 1024px;
-	margin: -47px auto 0;
-	height: 47px;
-	background: #2e2e3a;
-	position: relative;
+.content .topbar {
+	width: 100%;
+	height: 48px;
 }
 
-.header {
-	height: 47px;
-	background: #f6f6f6;
-	font-family: 'WeblySleek UI Semibold';
-	font-size: 14px;
+.game-section {
+	
 }
 
-.games-menu {
-	position: relative;
-	padding-left: 1.25em;
-	color: #767993;
-}
-
-.games-menu:before {
-	content: "\E001";
-	font-family: 'icons';
-	font-size: 22px;
-}
 /* Eric Meyer's CSS Reset */
 
 html,
@@ -216,6 +200,31 @@ body,
 	height: auto !important;
 	height: 100%;
 	background: #e7e7e7;
+}
+.header {
+	height: 47px;
+	background: #f6f6f6;
+	font-family: 'WeblySleek UI Semibold';
+	font-size: 14px;
+}
+
+.games-menu {
+	position: relative;
+	padding-left: 1.25em;
+	color: #767993;
+}
+
+.games-menu:before {
+	content: "\E001";
+	font-family: 'icons';
+	font-size: 22px;
+}
+.footer {
+	width: 1024px;
+	margin: -47px auto 0;
+	height: 47px;
+	background: #2e2e3a;
+	position: relative;
 }
 .button {
 	min-width: 170px;

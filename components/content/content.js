@@ -1,4 +1,5 @@
-var React = require('react');
+var React = require('react'),
+	GameSection = require('../game-section/game-section.js');
 
 var Content = React.createClass({
 			//	handleSubmit: function (e) {
@@ -17,7 +18,7 @@ var Content = React.createClass({
 			//		return;
 			//	},
 			render: function () {
-				return ( < main className = "content" > < /main>);
+				return ( < main className = "content" > < div className = "topbar" > < /div>  < GameSection title="My title" /> < /main> );
 				}
 			});
 
