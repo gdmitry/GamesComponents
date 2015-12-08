@@ -9,10 +9,88 @@
 	height: 48px;
 }
 
-.game-section {
-	
+.footer {
+	width: 1024px;
+	margin: -47px auto 0;
+	height: 47px;
+	background: #2e2e3a;
+	position: relative;
+}
+.game-section {}
+
+.game-section .title {
+	font-size: 16px;
+	background: red;
+	font-size: 30px;
+	line-height: 1.2em;
 }
 
+.game-section .container {}
+
+.header {
+	position: relative;
+	height: 47px;
+	background: #f6f6f6;
+	font-family: 'WeblySleek UI Semibold';
+	font-size: 14px;
+	padding: 0 15px 0;
+	line-height: 47px;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.header .left-controls {
+	position: relative;
+	width: 340px;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
+.header .right-controls {
+	position: absolute;
+	width: 260px;
+	height: 100%;
+	right: 0;
+	top: 0;
+}
+
+.header .games-menu {
+	position: absolute;
+	left: 0;
+	color: #767993;
+}
+
+.header .search {
+	position: absolute;
+	right: 0;
+	color: #767993;
+}
+
+.header .games-menu:before {
+	content: "\E001";
+	font-family: 'icons';
+	font-size: 22px;
+}
+
+.header .community:before {
+	content: "\E000";
+	font-family: 'icons';
+	font-size: 22px;
+}
+
+.header .community {
+	position: absolute;
+	left: 0;
+	color: #767993;
+}
+
+.header .search:before {
+	content: "\E003";
+	font-family: 'icons';
+	font-size: 22px;
+}
 /* Eric Meyer's CSS Reset */
 
 html,
@@ -200,31 +278,6 @@ body,
 	height: auto !important;
 	height: 100%;
 	background: #e7e7e7;
-}
-.header {
-	height: 47px;
-	background: #f6f6f6;
-	font-family: 'WeblySleek UI Semibold';
-	font-size: 14px;
-}
-
-.games-menu {
-	position: relative;
-	padding-left: 1.25em;
-	color: #767993;
-}
-
-.games-menu:before {
-	content: "\E001";
-	font-family: 'icons';
-	font-size: 22px;
-}
-.footer {
-	width: 1024px;
-	margin: -47px auto 0;
-	height: 47px;
-	background: #2e2e3a;
-	position: relative;
 }
 .button {
 	min-width: 170px;

@@ -91,5 +91,5 @@ gulp.task('iconfont', function () {
 		.pipe(svgmin())
 		.pipe(iconfont(iconFontConfig))
 		.pipe(plugin(iconFontConfig))
-		.pipe(gulp.dest('./build/fonts'));
+		.pipe(gulp.dest('./fonts'));
 });

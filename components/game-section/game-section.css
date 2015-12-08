@@ -1,3 +1,10 @@
-.game-section {
-	
+.game-section {}
+
+.game-section .title {
+	font-size: 16px;
+	background: red;
+	font-size: 30px;
+	line-height: 1.2em;
 }
+
+.game-section .container {}
