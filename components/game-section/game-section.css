@@ -1,10 +1,15 @@
-.game-section {}
+.game-section {
+	font-family: 'WeblySleek UI Semibold';
+}
 
 .game-section .title {
 	font-size: 16px;
-	background: red;
-	font-size: 30px;
-	line-height: 1.2em;
+	padding: 0 8px;
+	line-height: 2em;
+	background: #d6d6d7;
+	text-transform: uppercase;
 }
 
-.game-section .container {}
+.game-section .container {
+	padding: 0;
+}

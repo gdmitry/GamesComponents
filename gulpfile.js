@@ -8,7 +8,9 @@ var gulp = require('gulp'),
 	gutil = require('gulp-util'),
 	rename = require('gulp-rename'),
 	concat = require('gulp-concat'),
-	plugin = require('./plugin/tasks/plugin');
+	plugin = require('./plugin/tasks/plugin'),
+	connect = require('gulp-connect'),
+	changed = require('gulp-changed');
 
 
 gulp.task('scripts', function () {
@@ -20,24 +22,29 @@ gulp.task('scripts', function () {
 		}))
 		.pipe(rename('index.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest('./build/js'));
+		.pipe(gulp.dest('./build/js'))
+		.pipe(connect.reload());
 });
 
 
-gulp.task('watch', function () {
+gulp.task('watch', ['clean'], function () {
 	gulp.watch(['components/**/*.js', 'components/**/*.jsx'], ['scripts']);
+	gulp.watch(['components/**/*.css'], ['css']);
 });
 
 gulp.task('templates', function () {
 	return gulp.src(['index.html'])
-		.pipe(gulp.dest('./build'));
+		.pipe(changed('build/index.html'))
+		.pipe(gulp.dest('./build'))
+		.pipe(connect.reload());
 
 });
 
 gulp.task('css', function () {
 	return gulp.src('components/**/*.css')
 		.pipe(concat('styles.css'))
-		.pipe(gulp.dest('./build/css'));
+		.pipe(gulp.dest('./build/css'))
+		.pipe(connect.reload());
 });
 
 gulp.task('fonts', function () {
@@ -54,6 +61,11 @@ gulp.task('default', ['scripts', 'watch']);
 
 gulp.task('build', ['clean'], function () {
 	gulp.start('scripts', 'css', 'fonts', 'templates');
+	gutil.log('tasks is completed');
+});
+
+gulp.task('dev', ['clean'], function () {
+	gulp.start('scripts', 'css', 'fonts', 'server', 'watch', 'templates');
 	gutil.log('tasks is completed');
 });
 
@@ -92,4 +104,12 @@ gulp.task('iconfont', function () {
 		.pipe(iconfont(iconFontConfig))
 		.pipe(plugin(iconFontConfig))
 		.pipe(gulp.dest('./fonts'));
+});
+
+gulp.task('server', function () {
+	connect.server({
+		root: '',
+		port: 9090,
+		livereload: true
+	});
 });
