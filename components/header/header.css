@@ -14,7 +14,6 @@
 .header .left-controls {
 	position: relative;
 	width: 340px;
-	height: 100%;
 	left: 0;
 	top: 0;
 }
@@ -22,9 +21,13 @@
 .header .right-controls {
 	position: absolute;
 	width: 260px;
-	height: 100%;
 	right: 0;
 	top: 0;
+}
+
+.header .name {
+	display: inline;
+	vertical-align: top;
 }
 
 .header .games-menu {
