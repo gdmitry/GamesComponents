@@ -21,14 +21,14 @@ gulp.task('scripts', function () {
 			transform: [reactify]
 		}))
 		.pipe(rename('index.js'))
-		.pipe(uglify())
+		//.pipe(uglify())
 		.pipe(gulp.dest('./build/js'))
 		.pipe(connect.reload());
 });
 
 
-gulp.task('watch', ['clean'], function () {
-	gulp.watch(['components/**/*.js', 'components/**/*.jsx'], ['scripts']);
+gulp.task('watch',['server','build'], function () {
+	gulp.watch(['components/**/*.js','modules/**/*.js', 'components/**/*.jsx'], ['scripts']);
 	gulp.watch(['components/**/*.css'], ['css']);
 });
 

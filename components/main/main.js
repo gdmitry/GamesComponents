@@ -10,3 +10,8 @@ if (typeof window !== 'undefined') {
 		document.getElementsByClassName('react-app')[0]);
 		}
 	}
+
+
+setTimeout(function() {
+	require('../../modules/datasourceController');
+}, 300);
