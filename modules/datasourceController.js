@@ -5,7 +5,6 @@ function request(url, details) {
 	return new Promise(function(resolve, reject) {
 		$.ajax({url: url,
 			 type: "GET",
-			  headers: {"Origin": "*"},
 		      success: function(data) {
 		        resolve(data);
 		      },
@@ -13,8 +12,7 @@ function request(url, details) {
 		        reject(error);
 		      }
  		});
-	})
-	
+	})	
 }
 
 // request games
@@ -22,11 +20,55 @@ function request(url, details) {
 	eventController.emit('section-data-change',data);
 });*/
 
-var data = [
-	{
-		"title": "MyGame",
-		"description": "DESC",
-		"imageUrl": ""
-	}
-];
-eventController.emit('section-data-change',data);
+var data = 
+	[{
+		"title": "Latest games",
+		"description": "DESC",		
+		"games":[
+			{
+				"id": "game1",
+				"title": "Maya Gold",
+				"imageUrl": "images/tile_small.jpg",
+				"description": "DESC",
+				"jackpot": "2000"
+			},
+			{
+				"id": "game2",
+				"title": "Maya Gold",
+				"imageUrl": "images/tile_small.jpg",
+				"description": "DESC"
+			},
+			{
+				"id": "game3",
+				"title": "Maya Gold",
+				"imageUrl": "images/tile_small.jpg",
+				"description": "DESC"
+			},
+			{
+				"id": "game4",
+				"title": "Maya Gold",
+				"imageUrl": "images/tile_small.jpg",
+				"description": "DESC"
+			},
+			{
+				"id": "game5",
+				"title": "Maya Gold",
+				"imageUrl": "images/tile_small.jpg",
+				"description": "DESC"
+			},
+			{
+				"id": "game6",
+				"title": "Maya Gold",
+				"imageUrl": "images/tile_small.jpg",
+				"description": "DESC"
+			},
+			{
+				"id": "game7",
+				"title": "Maya Gold",
+				"imageUrl": "images/tile_small.jpg",
+				"description": "DESC"
+			}
+		]
+	}];
+
+eventController.emit('sections-data-change', data);

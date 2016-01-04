@@ -2,11 +2,11 @@
 	font-family: 'WeblySleek UI Semibold';
 }
 
-.game-section .title {
+.game-section .section-title {
 	font-size: 16px;
 	padding: 0 8px;
 	line-height: 2em;
-	background: #d6d6d7;	
+	background: #d6d6d7;
 	text-transform: uppercase;
 }
 

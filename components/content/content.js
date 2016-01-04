@@ -18,7 +18,10 @@ var Content = React.createClass({
 			//		return;
 			//	},
 			render: function () {
-				return ( < main className = "content" > < div className = "topbar" > < /div>  < GameSection title="My title" /> < /main> );
+				return (<main className = "content">
+							 <div className = "topbar"></div>
+							 <GameSection title="Latest games"/>
+				 		</main> );
 				}
 			});
 
