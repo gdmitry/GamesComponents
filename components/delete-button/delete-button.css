@@ -1,0 +1,38 @@
+.delete-button {
+	display: block;
+	width: 232px;
+	height: 48px;	
+	font-size: 14px;
+	font-family: 'WeblySleek UI Semibold';
+	color: #696e9d;
+	line-height: 48px;
+	text-align: center;
+	border: 1px solid #696e9d;
+	-moz-user-select: none;
+ 	-webkit-user-select: none;
+  	-ms-user-select: none;	
+  	cursor: default;
+  	transition: color 2s, border-color 2s;
+}
+
+.delete-button.size-small {	
+	width: 130px;
+	height: 32px;
+	line-height: 32px;		
+}
+
+.delete-button:active {
+	color: #5161f7;
+	border-color: #5161f7;
+	box-shadow: none;
+}
+
+.delete-button:hover {
+	color: #5161f7;
+	border-color: #5161f7;
+	box-shadow: 3px 3px 4px rgba(0,0,0,0.1), inset 3px 3px 4px rgba(0,0,0,0.1);
+}
+
+.delete-button.hidden {
+	display: none;
+}

@@ -4,14 +4,27 @@ var React = require('react'),
 
 var GameSection = React.createClass({
 	 		getInitialState: function() {
+
     			return {games: []};
   			},
-  			componentDidMount: function () {
-  				var self = this;
+  			componentDidMount: function () {  		
+  				var element = this.getDOMNode();
+  				element.classList.add('hidden');		
 				eventController.listen('sections-data-change', this.updateContent);			
+				eventController.listen('navigation-change', this.changeLayout);
 			},
-			updateContent: function(data) {
-				var sections = data.detail,
+			changeLayout: function (event) {  		
+		 		var details = event.detail;
+		 		var element = this.getDOMNode();
+
+		 		if (details.url === 'showcase') {
+		 			element.classList.remove('hidden');
+		 		}else{
+		 			element.classList.add('hidden');	
+		 		}
+			},	
+			updateContent: function(event) {
+				var sections = event.detail,
 					sectionNames = sections.map(function(section) {
 					return section.title;
 				});

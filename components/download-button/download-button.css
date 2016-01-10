@@ -1,0 +1,54 @@
+.download-button {
+	display: block;
+	width: 232px;
+	height: 48px;	
+	font-size: 14px;
+	font-family: 'WeblySleek UI Semibold';
+	color: #fff;
+	line-height: 48px;
+	text-align: center;
+	-moz-user-select: none;
+ 	-webkit-user-select: none;
+  	-ms-user-select: none;
+	overflow: hidden;
+	cursor: default;
+}
+
+.download-button .state {	
+	display:none;	
+}
+
+.download-button.size-small {	
+	width: 130px;
+	height: 32px;
+	line-height: 32px;		
+}
+
+.download-button.play .play,
+.download-button.download .download,
+.download-button.progress .progress {
+	display:block;
+}
+
+.download-button.play,
+.download-button.download {
+	background: linear-gradient(#6ea412, #4b9742);
+}
+
+.download-button.play:hover,
+.download-button.download:hover {	
+	background: #609e26;
+	box-shadow: 0 3px 4px rgba(0,0,0,0.4);
+}
+
+.download-button.play:active,
+.download-button.download:active {
+	background: #609e26;
+	box-shadow: none;
+}
+
+.download-button.progress {	
+	background: #5161f7;
+	text-align: left;
+	padding-left: 10px;
+}

@@ -1,12 +1,108 @@
 .content {
 	position: relative;
-	background: #efeeee;
+	/*background: #efeeee;*/
 	padding: 0 12px 47px;
 }
 
 .content .topbar {
 	width: 100%;
 	height: 48px;
+}
+
+.hidden {
+	display: none;
+}
+.delete-button {
+	display: block;
+	width: 232px;
+	height: 48px;	
+	font-size: 14px;
+	font-family: 'WeblySleek UI Semibold';
+	color: #696e9d;
+	line-height: 48px;
+	text-align: center;
+	border: 1px solid #696e9d;
+	-moz-user-select: none;
+ 	-webkit-user-select: none;
+  	-ms-user-select: none;	
+  	cursor: default;
+  	transition: color 2s, border-color 2s;
+}
+
+.delete-button.size-small {	
+	width: 130px;
+	height: 32px;
+	line-height: 32px;		
+}
+
+.delete-button:active {
+	color: #5161f7;
+	border-color: #5161f7;
+	box-shadow: none;
+}
+
+.delete-button:hover {
+	color: #5161f7;
+	border-color: #5161f7;
+	box-shadow: 3px 3px 4px rgba(0,0,0,0.1), inset 3px 3px 4px rgba(0,0,0,0.1);
+}
+
+.delete-button.hidden {
+	display: none;
+}
+.download-button {
+	display: block;
+	width: 232px;
+	height: 48px;	
+	font-size: 14px;
+	font-family: 'WeblySleek UI Semibold';
+	color: #fff;
+	line-height: 48px;
+	text-align: center;
+	-moz-user-select: none;
+ 	-webkit-user-select: none;
+  	-ms-user-select: none;
+	overflow: hidden;
+	cursor: default;
+}
+
+.download-button .state {	
+	display:none;	
+}
+
+.download-button.size-small {	
+	width: 130px;
+	height: 32px;
+	line-height: 32px;		
+}
+
+.download-button.play .play,
+.download-button.download .download,
+.download-button.progress .progress {
+	display:block;
+}
+
+.download-button.play,
+.download-button.download {
+	background: linear-gradient(#6ea412, #4b9742);
+}
+
+.download-button.play:hover,
+.download-button.download:hover {	
+	background: #609e26;
+	box-shadow: 0 3px 4px rgba(0,0,0,0.4);
+}
+
+.download-button.play:active,
+.download-button.download:active {
+	background: #609e26;
+	box-shadow: none;
+}
+
+.download-button.progress {	
+	background: #5161f7;
+	text-align: left;
+	padding-left: 10px;
 }
 
 .footer {
@@ -16,8 +112,61 @@
 	background: #2e2e3a;
 	position: relative;
 }
+.game-details {
+	position: relative;
+	background: #f6f6f6;
+	padding: 8px 8px 20px;
+	height: 465px;
+	box-sizing: border-box;
+} 
+
+.game-details .top-container {
+	position: relative;
+}
+ 
+.game-details .game-image {
+	display: inline-block;
+	vertical-align: top;	
+} 
+
+.game-details .game-title {
+	font-size: 32px;
+	line-height: 1.8em;
+	font-family: 'WeblySleek UI Semibold';
+	color: #fb5252;
+} 
+
+.game-details .game-info {
+	display: inline-block;
+	position:absolute;
+	top: 0;
+	right: 0;
+	vertical-align: top;
+	width: 485px;
+	height: 262px;
+}
+
+.game-details .game-info .download-button{
+	position:absolute;
+	bottom: 0;
+	right: 0;	
+} 
+
+.game-details .game-info .delete-button{
+	position:absolute;
+	bottom: 0;
+	left: 0;	
+} 
+
+.game-details  .jackpot {
+	color: #5f5f5f;
+	font-family: 'WeblySleek UI Semibold';
+	font-size: 14px;
+	margin-bottom: 2em;
+}
 .game-section {
 	font-family: 'WeblySleek UI Semibold';
+	background:#efeeee;
 }
 
 .game-section .section-title {
@@ -51,15 +200,23 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
+	box-sizing: border-box;
 	left:0;
 	top: 100%;	
 	padding: 15px 8px;
 	background: #f6f6f6;
-	transition: top .3s ease;
+	transition: transform .3s ease;
 }
 
 .game-tile:hover .game-info {	
-	top: 0;		
+	transform: translateY(-100%);		
+}
+
+.game-tile .game-info .controls {	
+	position: absolute;
+    bottom: 8px;
+    width: 100%;
+    left:0;
 }
 
 .game-tile .game-summary .game-title {
@@ -93,9 +250,32 @@
 .game-tile .jackpot {
 	color: #5f5f5f;
 	line-height: 0.8em;
+	font-family: 'WeblySleek UI Semibold';
+	font-size: 12px;
+}
+
+.game-tile .game-info .download-button {
+	position: relative;
+	bottom:0;
+	left:8px;
+}
+
+.game-tile .game-info .info-button {
+	position: absolute;
+   	cursor: pointer;
+    width: 40px;
+    height: 32px;
+    background: #ffffff;
+    right: 8px;
+    top: 0;
+    font-size: 14px;
+	font-family: 'WeblySleek UI Semibold';
+    line-height: 32px;
+    text-align: center;
 }
 
 
+   
 .header {
 	position: relative;
 	height: 47px;
