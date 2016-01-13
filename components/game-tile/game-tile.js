@@ -22,6 +22,7 @@ var GameTile = React.createClass({
 				<div className="game-info"> 
 					<div className="game-title">{this.props.data.title}</div>								
 					<div className="jackpot">{this.props.data.jackpot ? "Jackpot: "+this.props.data.jackpot : ""}</div>
+					<div className="description">Nine chances to win big money.</div>
 					<div className="controls">
 						<DownloadButton data = {this.props.data} />
 						<div className="info-button">i</div>

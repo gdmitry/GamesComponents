@@ -22,6 +22,7 @@
 	line-height: 48px;
 	text-align: center;
 	border: 1px solid #696e9d;
+	box-sizing: border-box;
 	-moz-user-select: none;
  	-webkit-user-select: none;
   	-ms-user-select: none;	
@@ -62,24 +63,20 @@
 	-moz-user-select: none;
  	-webkit-user-select: none;
   	-ms-user-select: none;
-	overflow: hidden;
+	overflow: hidden; 
 	cursor: default;
+	box-sizing: border-box;
 }
 
-.download-button .state {	
-	display:none;	
+.download-button  .spinner-wrapper {	
+	right: 10px;
+	display: none;
 }
 
 .download-button.size-small {	
 	width: 130px;
 	height: 32px;
 	line-height: 32px;		
-}
-
-.download-button.play .play,
-.download-button.download .download,
-.download-button.progress .progress {
-	display:block;
 }
 
 .download-button.play,
@@ -105,6 +102,21 @@
 	padding-left: 10px;
 }
 
+.download-button.progress .spinner-wrapper {	
+	display: block;
+}
+
+.download-button.size-small .spinner-wrapper{	
+	display: none;	
+}
+
+.download-button.progress:active {	
+	background: #696e9d;
+}
+
+.download-button.progress:hover {	
+	box-shadow: 0 3px 4px rgba(0,0,0,0.4);
+}
 .footer {
 	width: 1024px;
 	margin: -47px auto 0;
@@ -144,6 +156,7 @@
 	vertical-align: top;
 	width: 485px;
 	height: 262px;
+	padding-bottom: 32px;
 }
 
 .game-details .game-info .download-button{
@@ -158,6 +171,10 @@
 	left: 0;	
 } 
 
+.game-details .game-info .game-description {
+		line-height: 2em;
+} 
+
 .game-details  .jackpot {
 	color: #5f5f5f;
 	font-family: 'WeblySleek UI Semibold';
@@ -166,19 +183,24 @@
 }
 .game-section {
 	font-family: 'WeblySleek UI Semibold';
-	background:#efeeee;
+	background: #d6d6d7;
 }
 
 .game-section .section-title {
 	font-size: 16px;
 	padding: 0 8px;
-	line-height: 2em;
-	background: #d6d6d7;
+	line-height: 2em;	
 	text-transform: uppercase;
 }
 
 .game-section .container {
 	padding: 0;
+    margin: 0;
+    padding: 1px px 0;
+    margin-right: -2px;
+    padding-left: 2px;
+    padding-top: 2px;
+    margin-bottom: -2px;
 }
 .game-tile {
 	position: relative;
@@ -186,9 +208,15 @@
 	padding: 8px;	
 	box-sizing: border-box;
 	background:#efeeee;
-	border: solid 1px #d6d6d7;	
+	border: solid 2px transparent;	
+	border-top: none;
+	border-left: none;
 	overflow: hidden;
 	vertical-align: top;
+	margin: 0;
+	-webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box; 
 }
 
 .game-tile .game-summary {
@@ -529,7 +557,7 @@ body,
 }
 
 .main {
-	width: 1024px;
+	max-width: 1026px;
 	margin: 0 auto;
 	min-height: 100%;
 	height: auto !important;
@@ -558,4 +586,105 @@ body,
 
 .button-play:active {
 	background: #609e26;
+}
+.spinner-wrapper {
+	display: block;
+	position: absolute;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	right: 0;
+	top: 50%;
+	margin-top: -12px;
+	width: 24px;
+	height: 24px;
+}
+
+.spinner {
+	/*display: none;*/
+	position: relative;
+}
+
+.spinner .track {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 24px;
+	height: 24px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-radius: 50%;
+	border-width: 3px;
+	border-style: solid;
+	border-color: rgba(255, 255, 255, .2);
+}
+
+.spinner .circle {
+	content: '';
+	position: absolute;
+	top: auto;
+	right: 0;
+	width: 24px;
+	height: 24px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-animation: spinner 0.6s linear;
+	-moz-animation: spinner 0.6s linear;
+	animation: spinner 0.6s linear;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	border-radius: 50%;
+	border-color: #ffffff transparent transparent;
+	border-style: solid;
+	border-width: 3px;
+}
+
+/* .ui-theme-button-primary-login-progress .spinner {
+	display: block;
+}*/
+
+@-webkit-keyframes spinner {
+	from {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@-moz-keyframes spinner {
+	from {
+		-moz-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@-o-keyframes spinner {
+	from {
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	to {
+		-o-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spinner {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }

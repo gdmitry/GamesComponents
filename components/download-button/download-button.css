@@ -10,24 +10,20 @@
 	-moz-user-select: none;
  	-webkit-user-select: none;
   	-ms-user-select: none;
-	overflow: hidden;
+	overflow: hidden; 
 	cursor: default;
+	box-sizing: border-box;
 }
 
-.download-button .state {	
-	display:none;	
+.download-button  .spinner-wrapper {	
+	right: 10px;
+	display: none;
 }
 
 .download-button.size-small {	
 	width: 130px;
 	height: 32px;
 	line-height: 32px;		
-}
-
-.download-button.play .play,
-.download-button.download .download,
-.download-button.progress .progress {
-	display:block;
 }
 
 .download-button.play,
@@ -51,4 +47,20 @@
 	background: #5161f7;
 	text-align: left;
 	padding-left: 10px;
+}
+
+.download-button.progress .spinner-wrapper {	
+	display: block;
+}
+
+.download-button.size-small .spinner-wrapper{	
+	display: none;	
+}
+
+.download-button.progress:active {	
+	background: #696e9d;
+}
+
+.download-button.progress:hover {	
+	box-shadow: 0 3px 4px rgba(0,0,0,0.4);
 }

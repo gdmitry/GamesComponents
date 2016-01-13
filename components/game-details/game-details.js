@@ -17,13 +17,12 @@ var GameDetails= React.createClass({
  		var details = event.detail;
  			var element = this.getDOMNode();
  		if (details.url === 'details') { 		
-  			element.classList.remove('hidden');
   			this.active = true;
   			eventController.emit('game-state-change', {gameId: this.state.game.gameId, state: this.state.game.state || 'download'});
  		}else{
- 			element.classList.add('hidden');	
  			this.active = false;
  		}
+ 		element.classList[this.active ? 'remove' : 'add']('hidden');
 	},	
 	updateContent: function (event) {  		
   		var details = event.detail;  	
@@ -38,7 +37,7 @@ var GameDetails= React.createClass({
 				<div className="game-info">
 					<div className="game-title">{this.state.game.title}</div>
 					<div className="jackpot">{this.state.game.jackpot ? "Jackpot: " + this.state.game.jackpot : ""}</div>
-					<div className="game-description">{this.state.game.description}</div>
+					<div className="game-description">{this.state.game.longDescription}</div>
 					<DownloadButton data = {this.state.game} size={'large'}/>
 					<DeleteButton data = {this.state.game} size={'large'}/>
 				</div>	

@@ -184,7 +184,7 @@ body,
 }
 
 .main {
-	width: 1024px;
+	max-width: 1026px;
 	margin: 0 auto;
 	min-height: 100%;
 	height: auto !important;

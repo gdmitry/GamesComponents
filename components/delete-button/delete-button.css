@@ -8,6 +8,7 @@
 	line-height: 48px;
 	text-align: center;
 	border: 1px solid #696e9d;
+	box-sizing: border-box;
 	-moz-user-select: none;
  	-webkit-user-select: none;
   	-ms-user-select: none;	

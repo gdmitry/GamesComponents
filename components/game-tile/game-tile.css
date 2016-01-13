@@ -4,9 +4,15 @@
 	padding: 8px;	
 	box-sizing: border-box;
 	background:#efeeee;
-	border: solid 1px #d6d6d7;	
+	border: solid 2px transparent;	
+	border-top: none;
+	border-left: none;
 	overflow: hidden;
 	vertical-align: top;
+	margin: 0;
+	-webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box; 
 }
 
 .game-tile .game-summary {

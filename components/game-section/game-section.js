@@ -15,13 +15,8 @@ var GameSection = React.createClass({
 			},
 			changeLayout: function (event) {  		
 		 		var details = event.detail;
-		 		var element = this.getDOMNode();
-
-		 		if (details.url === 'showcase') {
-		 			element.classList.remove('hidden');
-		 		}else{
-		 			element.classList.add('hidden');	
-		 		}
+		 		var element = this.getDOMNode();		 		
+		 		element.classList[details.url === 'showcase' ? 'remove' : 'add']('hidden');
 			},	
 			updateContent: function(event) {
 				var sections = event.detail,
