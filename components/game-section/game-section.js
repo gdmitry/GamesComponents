@@ -4,7 +4,6 @@ var React = require('react'),
 
 var GameSection = React.createClass({
 	 		getInitialState: function() {
-
     			return {games: []};
   			},
   			componentDidMount: function () {  		
@@ -17,6 +16,9 @@ var GameSection = React.createClass({
 		 		var details = event.detail;
 		 		var element = this.getDOMNode();		 		
 		 		element.classList[details.url === 'showcase' ? 'remove' : 'add']('hidden');
+		 		if (details.url === 'showcase') {
+		 			window.location.hash = 'showcase';
+		 		}		 		
 			},	
 			updateContent: function(event) {
 				var sections = event.detail,

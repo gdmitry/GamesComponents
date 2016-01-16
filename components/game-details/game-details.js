@@ -19,6 +19,9 @@ var GameDetails= React.createClass({
  		if (details.url === 'details') { 		
   			this.active = true;
   			eventController.emit('game-state-change', {gameId: this.state.game.gameId, state: this.state.game.state || 'download'});
+
+		 			window.location.hash = 'details';
+		 		
  		}else{
  			this.active = false;
  		}

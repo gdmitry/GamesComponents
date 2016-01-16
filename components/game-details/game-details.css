@@ -29,8 +29,8 @@
 	right: 0;
 	vertical-align: top;
 	width: 485px;
-	height: 262px;
-	padding-bottom: 32px;
+	height: auto;
+	padding-bottom: 70px;
 }
 
 .game-details .game-info .download-button{
@@ -46,7 +46,9 @@
 } 
 
 .game-details .game-info .game-description {
-		line-height: 2em;
+	line-height: 2em;
+	overflow-y: scroll;
+	max-height: 100px;
 } 
 
 .game-details  .jackpot {
@@ -54,4 +56,5 @@
 	font-family: 'WeblySleek UI Semibold';
 	font-size: 14px;
 	margin-bottom: 2em;
+	min-height: 18px;
 }

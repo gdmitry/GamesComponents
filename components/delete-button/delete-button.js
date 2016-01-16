@@ -17,8 +17,7 @@ var Button = React.createClass({
 				var game = event.detail;		
 				var element = this.getDOMNode();			
   				if (game.gameId === this.props.data.gameId) {
-  					// bad code
-  				  (game.state === 'play') ? element.classList.remove('hidden') : element.classList.add('hidden');  					
+  					element.classList[game.state === 'play' ? 'remove' : 'add']('hidden');					
   				}
 			},
 			render: function () {

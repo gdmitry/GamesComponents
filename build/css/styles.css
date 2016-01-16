@@ -117,13 +117,6 @@
 .download-button.progress:hover {	
 	box-shadow: 0 3px 4px rgba(0,0,0,0.4);
 }
-.footer {
-	width: 1024px;
-	margin: -47px auto 0;
-	height: 47px;
-	background: #2e2e3a;
-	position: relative;
-}
 .game-details {
 	position: relative;
 	background: #f6f6f6;
@@ -155,8 +148,8 @@
 	right: 0;
 	vertical-align: top;
 	width: 485px;
-	height: 262px;
-	padding-bottom: 32px;
+	height: auto;
+	padding-bottom: 70px;
 }
 
 .game-details .game-info .download-button{
@@ -172,7 +165,9 @@
 } 
 
 .game-details .game-info .game-description {
-		line-height: 2em;
+	line-height: 2em;
+	overflow-y: scroll;
+	max-height: 100px;
 } 
 
 .game-details  .jackpot {
@@ -180,6 +175,7 @@
 	font-family: 'WeblySleek UI Semibold';
 	font-size: 14px;
 	margin-bottom: 2em;
+	min-height: 18px;
 }
 .game-section {
 	font-family: 'WeblySleek UI Semibold';
@@ -687,4 +683,12 @@ body,
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+.footer {
+	width: 1024px;
+	margin: -47px auto 0;
+	height: 47px;
+	background: #2e2e3a;
+	position: relative;
 }
