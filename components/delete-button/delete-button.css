@@ -1,5 +1,5 @@
 .delete-button {
-	display: block;
+	display: none;
 	width: 232px;
 	height: 48px;	
 	font-size: 14px;
@@ -34,6 +34,6 @@
 	box-shadow: 3px 3px 4px rgba(0,0,0,0.1), inset 3px 3px 4px rgba(0,0,0,0.1);
 }
 
-.delete-button.hidden {
-	display: none;
+.delete-button.active {
+	display: block;
 }

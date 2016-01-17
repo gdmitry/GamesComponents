@@ -9,48 +9,6 @@
 	height: 48px;
 }
 
-.hidden {
-	display: none;
-}
-.delete-button {
-	display: block;
-	width: 232px;
-	height: 48px;	
-	font-size: 14px;
-	font-family: 'WeblySleek UI Semibold';
-	color: #696e9d;
-	line-height: 48px;
-	text-align: center;
-	border: 1px solid #696e9d;
-	box-sizing: border-box;
-	-moz-user-select: none;
- 	-webkit-user-select: none;
-  	-ms-user-select: none;	
-  	cursor: default;
-  	transition: color 2s, border-color 2s;
-}
-
-.delete-button.size-small {	
-	width: 130px;
-	height: 32px;
-	line-height: 32px;		
-}
-
-.delete-button:active {
-	color: #5161f7;
-	border-color: #5161f7;
-	box-shadow: none;
-}
-
-.delete-button:hover {
-	color: #5161f7;
-	border-color: #5161f7;
-	box-shadow: 3px 3px 4px rgba(0,0,0,0.1), inset 3px 3px 4px rgba(0,0,0,0.1);
-}
-
-.delete-button.hidden {
-	display: none;
-}
 .download-button {
 	display: block;
 	width: 232px;
@@ -96,13 +54,13 @@
 	box-shadow: none;
 }
 
-.download-button.progress {	
+.download-button.loading {	
 	background: #5161f7;
 	text-align: left;
 	padding-left: 10px;
 }
 
-.download-button.progress .spinner-wrapper {	
+.download-button.loading .spinner-wrapper {	
 	display: block;
 }
 
@@ -110,12 +68,19 @@
 	display: none;	
 }
 
-.download-button.progress:active {	
+.download-button.loading:active {	
 	background: #696e9d;
 }
 
-.download-button.progress:hover {	
+.download-button.loading:hover {	
 	box-shadow: 0 3px 4px rgba(0,0,0,0.4);
+}
+.footer {
+	width: 1024px;
+	margin: -47px auto 0;
+	height: 47px;
+	background: #2e2e3a;
+	position: relative;
 }
 .game-details {
 	position: relative;
@@ -296,6 +261,7 @@
 	font-family: 'WeblySleek UI Semibold';
     line-height: 32px;
     text-align: center;
+    color:#000;
 }
 
 
@@ -560,29 +526,6 @@ body,
 	height: 100%;
 	background: #e7e7e7;
 }
-.button {
-	min-width: 170px;
-	height: 47px;
-}
-
-.button-play {
-	background: #5c9d2b;
-	/* Old browsers */
-	background: -moz-linear-gradient(top, #6ea413 0%, #4b9743 100%);
-	/* FF3.6-15 */
-	background: -webkit-linear-gradient(top, #6ea413 0%, #4b9743 100%);
-	/* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, #6ea413 0%, #4b9743 100%);
-}
-
-.button-play:hover {
-	background: #609e26;
-	box-shadow: 0px 3px 4px px rgba(0, 0, 0, 0.25);
-}
-
-.button-play:active {
-	background: #609e26;
-}
 .spinner-wrapper {
 	display: block;
 	position: absolute;
@@ -684,11 +627,42 @@ body,
 		transform: rotate(360deg);
 	}
 }
+.delete-button {
+	display: none;
+	width: 232px;
+	height: 48px;	
+	font-size: 14px;
+	font-family: 'WeblySleek UI Semibold';
+	color: #696e9d;
+	line-height: 48px;
+	text-align: center;
+	border: 1px solid #696e9d;
+	box-sizing: border-box;
+	-moz-user-select: none;
+ 	-webkit-user-select: none;
+  	-ms-user-select: none;	
+  	cursor: default;
+  	transition: color 2s, border-color 2s;
+}
 
-.footer {
-	width: 1024px;
-	margin: -47px auto 0;
-	height: 47px;
-	background: #2e2e3a;
-	position: relative;
+.delete-button.size-small {	
+	width: 130px;
+	height: 32px;
+	line-height: 32px;		
+}
+
+.delete-button:active {
+	color: #5161f7;
+	border-color: #5161f7;
+	box-shadow: none;
+}
+
+.delete-button:hover {
+	color: #5161f7;
+	border-color: #5161f7;
+	box-shadow: 3px 3px 4px rgba(0,0,0,0.1), inset 3px 3px 4px rgba(0,0,0,0.1);
+}
+
+.delete-button.active {
+	display: block;
 }

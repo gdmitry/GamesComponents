@@ -1,17 +1,14 @@
 var React = require('react'),
+	ReactDOM = require('react-dom'),
 	DownloadButton = require('../download-button/download-button'),
+	Link = require('react-router').Link;
 	eventController = require('../../modules/EventController');
 
 var GameTile = React.createClass({	
 	componentDidMount: function () {
-  		var element = this.getDOMNode();
+  		var element = ReactDOM.findDOMNode(this);
  		var infoButton = element.querySelectorAll('.info-button')[0];
- 		infoButton.addEventListener('click', this.openGameDetails, false); 		
-	},	
-	openGameDetails: function () {
-		eventController.emit('game-info-change', this.props.data);
-		eventController.emit('navigation-change', {url: 'details'});
-	},
+	},		
 	render: function () {		
 		return (<tile className = "game-tile small-size">
 				<div className="game-summary"> 
@@ -24,8 +21,8 @@ var GameTile = React.createClass({
 					<div className="jackpot">{this.props.data.jackpot ? "Jackpot: "+this.props.data.jackpot : ""}</div>
 					<div className="description">Nine chances to win big money.</div>
 					<div className="controls">
-						<DownloadButton data = {this.props.data} />
-						<div className="info-button">i</div>
+						<DownloadButton gameId = {this.props.data.gameId} />
+						<Link to={`/details/${this.props.data.gameId}`}><div className="info-button">i</div></Link>
 					</div>
 				</div>
 		</tile>);

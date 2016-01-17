@@ -1,46 +1,42 @@
 var React = require('react'),
+	ReactDOM = require('react-dom'),
 Spinner = require('../spinner/spinner'),
 eventController = require('../../modules/EventController');
 
 var Button = React.createClass({	
-			labels: {'play': 'Play', 'download': 'Download', 'progress': 'Downloading...'},
+			labels: {'play': 'Play', 'download': 'Download', 'loading': 'Downloading...'},
+
 			getInitialState: function() {
-				var initState = this.props.data.downloaded ? 'play' : 'download'; 
-    			return {state: initState};
+    			return {gameState: '', gameUrl: ''};
   			},
 			componentDidMount: function () {
-  				var element = this.getDOMNode();
+  				var element = ReactDOM.findDOMNode(this);
   				element.addEventListener('click', this.handleClick, false);
-  				document.addEventListener('game-state-change', this.updateGameState, false);
+  				eventController.listen('game-info-change', this.updateContent);	
+				eventController.emit('game-info-request', {gameId: this.props.gameId});
 			},
 			handleClick: function () {
-				if (this.state.state === 'play') {
+				console.log(this.state);
+				if (this.state.gameState === 'play') {
 					console.info('open link in new tab');
-					window.open(this.props.data.gameUrl);
+					window.open(this.state.gameUrl);
 					return;
 				}
-				if (this.state.state === 'download') {
+				if (this.state.gameState === 'download') {
 					console.info('download the game');
-					this.setGameStatus('progress');
-  					setTimeout(this.setGameStatus.bind(this, 'play'), 5000);
+					eventController.emit('game-state-change', {gameId: this.props.gameId, state: "loading"});
 				}  				  				
-			},
-			setGameStatus: function (gameState) {  				
-  				this.setState({state: gameState});  			
-  				this.props.data.state = this.state.state;
-				//this.props.data.downloaded =(this.state.state === 'play');
-				eventController.emit('game-info-change', this.props.data);
-  				eventController.emit('game-state-change', {gameId: this.props.data.gameId, state: this.state.state});
-			},			
-			updateGameState: function (event) {  
-				var game = event.detail;					
-  				if (game.gameId === this.props.data.gameId && game.state) {
-  					this.setState({state: game.state});
-  				}
-			},
+			},	
+			updateContent: function (event) {  		
+  				var game = event.detail;
+  				if (game.gameId === this.props.gameId && this.isMounted()) {
+  					game.state = game.state ||'download';
+					this.setState({gameState: game.state, gameUrl: game.Url});  
+  				}					  			 			
+			},				
 			render: function () {
 				return (<div className = {"download-button " + (this.props.size === 'small' || !this.props.size ? 'size-small' : '')+
-				' ' + this.state.state}>{this.labels[this.state.state]}
+				' ' + (this.state.gameState)}>{this.labels[this.state.gameState]}
 							<Spinner/>
 				 		</div> );
 				}

@@ -1,28 +1,31 @@
 var React = require('react'),
+ReactDOM = require('react-dom'),
 eventController = require('../../modules/EventController');
 
-var Button = React.createClass({				
+var Button = React.createClass({	
+			getInitialState: function() {
+    			return {gameState: ''};
+  			},			
 			componentDidMount: function () {
-  				var element = this.getDOMNode();
-  				element.classList.add('hidden');
+  				var element = ReactDOM.findDOMNode(this);
   				element.addEventListener('click', this.handleClick, false);
-  				document.addEventListener('game-state-change', this.updateGameState, false);
+  				eventController.listen('game-info-change', this.updateContent);	
+				eventController.emit('game-info-request', {gameId: this.props.gameId});
 			},
-			handleClick: function () {
-				this.props.data.downloaded = false;
-				eventController.emit('game-info-change', this.props.data);	
-				eventController.emit('game-state-change', {gameId: this.props.data.gameId, state: 'download'});			  				
-			},						
-			updateGameState: function (event) {  
-				var game = event.detail;		
-				var element = this.getDOMNode();			
-  				if (game.gameId === this.props.data.gameId) {
-  					element.classList[game.state === 'play' ? 'remove' : 'add']('hidden');					
-  				}
-			},
+			handleClick: function () {						
+				eventController.emit('game-state-change', {gameId: this.props.gameId, state: 'download'});			  				
+			},		
+			updateContent: function (event) {  		
+  				var game = event.detail;
+  				if (game.gameId === this.props.gameId && this.isMounted()) {
+  					game.state = game.state ||'download';
+					this.setState({gameState: game.state});  
+  				}					  			 			
+			},	
 			render: function () {
 				return (<div className = {"delete-button " + (this.props.size === 'small' ||
-						 !this.props.size ? 'size-small' : '')}>Delete</div> );
+						 !this.props.size ? 'size-small' : '') + " " 
+						 + (this.state.gameState === 'play' ? 'active' : '')}>Delete</div> );
 			}
 });
 

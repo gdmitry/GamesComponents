@@ -43,13 +43,13 @@
 	box-shadow: none;
 }
 
-.download-button.progress {	
+.download-button.loading {	
 	background: #5161f7;
 	text-align: left;
 	padding-left: 10px;
 }
 
-.download-button.progress .spinner-wrapper {	
+.download-button.loading .spinner-wrapper {	
 	display: block;
 }
 
@@ -57,10 +57,10 @@
 	display: none;	
 }
 
-.download-button.progress:active {	
+.download-button.loading:active {	
 	background: #696e9d;
 }
 
-.download-button.progress:hover {	
+.download-button.loading:hover {	
 	box-shadow: 0 3px 4px rgba(0,0,0,0.4);
 }

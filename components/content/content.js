@@ -1,16 +1,22 @@
 var React = require('react'),
-	GameSection = require('../game-section/game-section.js'),
-	GameDetails = require('../game-details/game-details.js'),
-	eventController = require('../../modules/EventController');
+	Header = require('../header/header.js'),
+	Footer = require('../footer/footer.js');
 
-var Content = React.createClass({		
-	render: function () {
-				return (<main className = "content">
-							 <div className = "topbar"></div>
-							 <GameSection title="Latest games"/>
-							 <GameDetails/>
-				 		</main> );
+var Template = React.createClass({		
+	render: function () {	
+						return (<div className="app">
+			 						<div className = "main">
+			  							<Header/>
+			  							<main className = "content">
+								 			<div className = "topbar"></div>
+								 				{this.props.children}
+					 					</main>
+			  						</div>
+			  						<Footer/>
+		  						</div>);
+
 				}
 			});
 
-		module.exports = Content;
+		module.exports = Template;
+
