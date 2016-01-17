@@ -4,19 +4,18 @@ var React = require('react'),
 
 var Template = React.createClass({		
 	render: function () {	
-						return (<div className="app">
-			 						<div className = "main">
-			  							<Header/>
-			  							<main className = "content">
-								 			<div className = "topbar"></div>
-								 				{this.props.children}
-					 					</main>
-			  						</div>
-			  						<Footer/>
-		  						</div>);
+		return (<div className="app">
+					<div className = "main">
+						<Header/>
+						<main className = "content">
+				 			<div className = "topbar"></div>
+			 				{this.props.children}
+						</main>
+					</div>
+					<Footer/>
+		  		</div>);
+	}
+});
 
-				}
-			});
-
-		module.exports = Template;
+module.exports = Template;
 

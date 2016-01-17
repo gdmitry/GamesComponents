@@ -5,19 +5,20 @@ eventController = require('../../modules/EventController');
 
 var GameDetails= React.createClass({	
 	getInitialState: function() {
-		console.log(this.props);
     	return {game: ''};
   	},
 	componentDidMount: function () {  		
 		eventController.listen('game-info-change', this.updateContent);	
 		eventController.emit('game-info-request', {gameId: this.props.params.gameId});				
 	},	
+	componentWillUnmount: function () {  			
+  		eventController.unlisten('game-info-change', this.updateContent);	
+	},
 	updateContent: function (event) {  		
   		var details = event.detail;
-  		if (this.isMounted()) { 					
-						this.setState({game: details});									
-  				}
-		  	  			 			
+  		if (this.isMounted() && this.props.params.gameId === details.gameId) { 					
+			this.setState({game: details});									
+  		}		  	  			 			
 	},	
 	render: function () {		
 		return (<div className = "game-details">

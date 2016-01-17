@@ -8,6 +8,7 @@ var GameTile = React.createClass({
 	componentDidMount: function () {
   		var element = ReactDOM.findDOMNode(this);
  		var infoButton = element.querySelectorAll('.info-button')[0];
+ 		eventController.emit('game-info-change', this.props.data);	
 	},		
 	render: function () {		
 		return (<tile className = "game-tile small-size">
