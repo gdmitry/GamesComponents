@@ -1,7 +1,5 @@
-var datasourceModel = {},
-    eventController = require('./EventController');
-
-datasourceModel.games = [];
+var datasourceModel = {};
+	
 datasourceModel.sections = [];
 
 function request(url) {
@@ -55,14 +53,14 @@ datasourceModel.getGame = function(gameId) {
 	return resultGame;
 }
 
-datasourceModel.updateGame = function(gameId, details) {
+datasourceModel.updateGame = function(details) {	
      datasourceModel.sections.forEach(function(section) {
     	section.games.forEach(function(game) {
-	        if (game.gameId === gameId) {
+	        if (game.gameId === details.gameId) {
 	           game.state = details.state;
 	        }
     	});    	
-    });
+});
 }
 
 module.exports = datasourceModel;

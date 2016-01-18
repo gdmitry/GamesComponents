@@ -1,14 +1,13 @@
 var React = require('react'),
 	ReactDOM = require('react-dom'),
 	DownloadButton = require('../download-button/download-button'),
-	Link = require('react-router').Link;
-	eventController = require('../../modules/EventController');
+	Link = require('react-router').Link;	
 
 var GameTile = React.createClass({	
 	componentDidMount: function () {
   		var element = ReactDOM.findDOMNode(this);
  		var infoButton = element.querySelectorAll('.info-button')[0];
- 		eventController.emit('game-info-change', this.props.data);	
+ 		Core.emit('game-info-change', this.props.data);	
 	},		
 	render: function () {		
 		return (<tile className = "game-tile small-size">

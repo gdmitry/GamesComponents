@@ -1,5 +1,4 @@
-var React = require('react'),
-	eventController = require('../../modules/eventController'),
+var React = require('react'),	
 	GameSection= require('../game-section/game-section');
 
 var GameSections = React.createClass({			
@@ -7,11 +6,11 @@ var GameSections = React.createClass({
     			return {sections: []};
   			},
   			componentDidMount: function () {  				
-				eventController.listen('sections-data-change', this.updateContent);
-				eventController.emit('sections-data-request');			
+				Core.listen('sections-data-change', this.updateContent);
+				Core.emit('sections-data-request');			
 			},			
 			componentWillUnmount: function () {
-  				eventController.unlisten('sections-data-change', this.updateContent);	
+  				Core.unlisten('sections-data-change', this.updateContent);	
 			},	
 			updateContent: function(event) {
 				var sections = event.detail;				

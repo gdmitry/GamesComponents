@@ -1,18 +1,17 @@
 var React = require('react'),
 DownloadButton = require('../download-button/download-button'),
-DeleteButton = require('../delete-button/delete-button'),
-eventController = require('../../modules/EventController');
+DeleteButton = require('../delete-button/delete-button');
 
 var GameDetails= React.createClass({	
 	getInitialState: function() {
     	return {game: ''};
   	},
 	componentDidMount: function () {  		
-		eventController.listen('game-info-change', this.updateContent);	
-		eventController.emit('game-info-request', {gameId: this.props.params.gameId});				
+		Core.listen('game-info-change', this.updateContent);	
+		Core.emit('game-info-request', {gameId: this.props.params.gameId});				
 	},	
 	componentWillUnmount: function () {  			
-  		eventController.unlisten('game-info-change', this.updateContent);	
+  		Core.unlisten('game-info-change', this.updateContent);	
 	},
 	updateContent: function (event) {  		
   		var details = event.detail;

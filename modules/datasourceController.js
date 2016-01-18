@@ -1,33 +1,30 @@
 var datasourceModel = require('./datasourceModel.js'),
-    eventController = require('./EventController');
+	dataPromise = datasourceModel.loadData('../data/data.json');
 
-var dataPromise = datasourceModel.loadData('../data/data.json');
-
-eventController.listen('sections-data-request', function() {
+Core.listen('sections-data-request', function() {
 	dataPromise.then(function() {
-		eventController.emit('sections-data-change', datasourceModel.sections);
+		Core.emit('sections-data-change', datasourceModel.sections);
 	});   
 });
 
-eventController.listen('game-info-request', function(event) {
+Core.listen('game-info-request', function(event) {
     var gameId = event.detail.gameId;
-    eventController.emit('game-info-change', datasourceModel.getGame(gameId));
+    Core.emit('game-info-change', datasourceModel.getGame(gameId));
 });
 
-eventController.listen('game-info-update', function(event) {
+Core.listen('game-info-update', function(event) {
     var details = event.detail;
-    datasourceModel.updateGame(details.gameId, {
-        state: details.state
-    });
+    datasourceModel.updateGame(details);  
+    Core.emit('game-info-request', details);
+});
+
+// mock play state
+Core.listen('game-info-update', function(event) {
+    var details = event.detail;   
     if (details.state === 'loading') {
         setTimeout(function() {
-            eventController.emit('game-info-update', {
-                gameId: details.gameId,
-                state: "play"
-            });
+        	details.state = "play";
+            Core.emit('game-info-update', details);
         }, 3000);
-    }
-    eventController.emit('game-info-request', {
-        gameId: details.gameId
-    });
+    }   
 });

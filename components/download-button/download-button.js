@@ -2,8 +2,7 @@ var React = require('react'),
 	ReactDOM = require('react-dom'),
 	addons = require('react-addons'), 
 	classSet = addons.classSet,
-	Spinner = require('../spinner/spinner'),
-	eventController = require('../../modules/EventController');
+	Spinner = require('../spinner/spinner');	
 
 var Button = React.createClass({	
 			labels: {'play': 'Play', 'download': 'Download', 'loading': 'Downloading...'},
@@ -13,12 +12,12 @@ var Button = React.createClass({
 			componentDidMount: function () {
   				var element = ReactDOM.findDOMNode(this);
   				element.addEventListener('click', this.handleClick, false);
-  				eventController.listen('game-info-change', this.updateContent);	
+  				Core.listen('game-info-change', this.updateContent);	
 			},
 			componentWillUnmount: function () {
   				var element = ReactDOM.findDOMNode(this);
   				element.removeEventListener('click', this.handleClick, false);
-  				eventController.unlisten('game-info-change', this.updateContent);	
+  				Core.unlisten('game-info-change', this.updateContent);	
 			},
 			handleClick: function () {
 				if (this.state.gameState === 'play') {
@@ -28,7 +27,7 @@ var Button = React.createClass({
 				}
 				if (this.state.gameState === 'download') {
 					console.info('download the game');
-					eventController.emit('game-info-update', {gameId: this.props.gameId, state: "loading"});
+					Core.emit('game-info-update', {gameId: this.props.gameId, state: "loading"});
 				}  				  				
 			},	
 			updateContent: function (event) {  		

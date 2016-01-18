@@ -1,5 +1,4 @@
-var React = require('react'),
-	eventController = require('../../modules/eventController'),
+var React = require('react'),	
 	GameTile = require('../game-tile/game-tile');
 
 var GameSection = React.createClass({	 	

@@ -12,7 +12,6 @@ var gulp = require('gulp'),
 	connect = require('gulp-connect'),
 	changed = require('gulp-changed');
 
-
 gulp.task('scripts', function () {
 	gulp.src('components/main/main.js')
 		.pipe(browserify({
@@ -37,7 +36,6 @@ gulp.task('templates', function () {
 		.pipe(changed('build/index.html'))
 		.pipe(gulp.dest('./build'))
 		.pipe(connect.reload());
-
 });
 
 gulp.task('css', function () {
@@ -47,7 +45,7 @@ gulp.task('css', function () {
 		.pipe(connect.reload());
 });
 
-gulp.task('resources', function () {
+gulp.task('images', function () {
 	return gulp.src('images/*')
 		.pipe(gulp.dest('./build/images'))
 		.pipe(connect.reload());
@@ -66,7 +64,7 @@ gulp.task('clean', function () {
 gulp.task('default', ['scripts', 'watch']);
 
 gulp.task('build', ['clean'], function () {
-	gulp.start('scripts', 'css', 'fonts', 'templates','resources');
+	gulp.start('scripts', 'css', 'fonts', 'templates','images');
 	gutil.log('tasks is completed');
 });
 

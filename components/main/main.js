@@ -5,7 +5,8 @@ var React = require('react'),
 	Template = require('../content/content.js'),
 	GameSections = require('../game-sections/game-sections.js'),
 	GameDetails = require('../game-details/game-details.js');
-
+	
+	require('../../modules/EventController');
 	require('../../modules/datasourceController');
 
 if (typeof window !== 'undefined') {
