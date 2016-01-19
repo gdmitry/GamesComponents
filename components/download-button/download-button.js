@@ -10,13 +10,11 @@ var Button = React.createClass({
     			return {gameState: '', gameUrl: ''};
   			},
 			componentDidMount: function () {
-  				var element = ReactDOM.findDOMNode(this);
-  				element.addEventListener('click', this.handleClick, false);
+  				this.refs.downloadButton.addEventListener('click', this.handleClick, false);
   				Core.listen('game-info-change', this.updateContent);	
 			},
 			componentWillUnmount: function () {
-  				var element = ReactDOM.findDOMNode(this);
-  				element.removeEventListener('click', this.handleClick, false);
+  				this.refs.downloadButton.removeEventListener('click', this.handleClick, false);
   				Core.unlisten('game-info-change', this.updateContent);	
 			},
 			handleClick: function () {
@@ -47,7 +45,7 @@ var Button = React.createClass({
         			'download': this.state.gameState === 'download',
         			'loading': this.state.gameState === 'loading'
     			});
-				return (<div className = {classes}>{this.labels[this.state.gameState]}
+				return (<div className = {classes} ref="downloadButton">{this.labels[this.state.gameState]}
 							<Spinner/>
 				 		</div> );
 				}

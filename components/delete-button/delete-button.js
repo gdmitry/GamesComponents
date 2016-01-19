@@ -7,14 +7,12 @@ var Button = React.createClass({
 			getInitialState: function() {
     			return {gameState: ''};
   			},			
-			componentDidMount: function () {
-  				var element = ReactDOM.findDOMNode(this);
-  				element.addEventListener('click', this.handleClick, false);
+			componentDidMount: function () {  				
+  				this.refs.deleteButton.addEventListener('click', this.handleClick, false);
   				Core.listen('game-info-change', this.updateContent);	
 			},
-			componentWillUnmount: function () {
-  				var element = ReactDOM.findDOMNode(this);
-  				element.removeEventListener('click', this.handleClick, false);
+			componentWillUnmount: function () {  				
+  				this.refs.deleteButton.removeEventListener('click', this.handleClick, false);
   				Core.unlisten('game-info-change', this.updateContent);	
 			},
 			handleClick: function () {			
@@ -36,7 +34,7 @@ var Button = React.createClass({
         			'active': this.state.gameState === 'play'
     			});
 
-				return (<div className = {classes}>Delete</div> );
+				return (<div className = {classes}  ref="deleteButton">Delete</div> );
 			}
 });
 

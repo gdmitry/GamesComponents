@@ -2,12 +2,12 @@ var React = require('react'),
 	GameSection= require('../game-section/game-section');
 
 var GameSections = React.createClass({			
-	 		getInitialState: function() {
+	 		getInitialState: function() { 
     			return {sections: []};
   			},
   			componentDidMount: function () {  				
 				Core.listen('sections-data-change', this.updateContent);
-				Core.emit('sections-data-request');			
+				Core.emit('sections-data-request');							
 			},			
 			componentWillUnmount: function () {
   				Core.unlisten('sections-data-change', this.updateContent);	

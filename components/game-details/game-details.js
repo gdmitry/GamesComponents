@@ -8,7 +8,7 @@ var GameDetails= React.createClass({
   	},
 	componentDidMount: function () {  		
 		Core.listen('game-info-change', this.updateContent);	
-		Core.emit('game-info-request', {gameId: this.props.params.gameId});				
+		Core.emit('game-info-request', {gameId: this.props.params.gameId});		
 	},	
 	componentWillUnmount: function () {  			
   		Core.unlisten('game-info-change', this.updateContent);	

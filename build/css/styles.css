@@ -201,7 +201,6 @@
     padding-top: 2px;
     margin-bottom: -2px;
 }
-
 .game-tile {
 	position: relative;
 	display: inline-block;
@@ -565,7 +564,6 @@ body,
 	height: 100%;
 	background: #e7e7e7;
 }
-
 .spinner-wrapper {
 	display: block;
 	position: absolute;
@@ -667,3 +665,4 @@ body,
 		transform: rotate(360deg);
 	}
 }
+
