@@ -1,6 +1,7 @@
 var datasourceModel = {};
 	
 datasourceModel.sections = [];
+datasourceModel.games = {};
 
 function request(url) {
     return new Promise(
@@ -33,34 +34,40 @@ datasourceModel.loadData = function(url) {
 	return request(url).then(function(data) {
 		try {
  			data = JSON.parse(data);
- 			datasourceModel.sections = data; 			
+            datasourceModel.sections = referenceModel(data);
+            console.info(datasourceModel.games);
 		} catch(e) {
 			console.error(e);
 		}		        
     });   
 }
 
-datasourceModel.getGame = function(gameId) {
-    var resultGame;
-    datasourceModel.sections.some(function(section) {
-    	return section.games.some(function(game) {
-	        if (game.gameId === gameId) {
-	            resultGame = game;
-	            return true;
-	        }
-    	});    	
-    });
-	return resultGame;
+datasourceModel.getGame = function(gameId) {   
+	return datasourceModel.games[gameId];
 }
 
-datasourceModel.updateGame = function(details) {	
-     datasourceModel.sections.forEach(function(section) {
-    	section.games.forEach(function(game) {
-	        if (game.gameId === details.gameId) {
-	           game.state = details.state;
-	        }
-    	});    	
-});
+datasourceModel.updateGame = function(details) { 
+    var game = datasourceModel.games[details.gameId];
+    game.state = details.state;
+}
+
+function referenceModel(data) {   
+    var index,
+    gameId,
+    gamesModel = datasourceModel.games;
+
+    data.forEach(function(section) {
+        index = 0;
+        section.games.forEach(function(game) {  
+            gameId = game.gameId;          
+            if (!(gameId in gamesModel)) {
+               gamesModel[gameId] = game;              
+            }
+            section.games[index] = gamesModel[gameId];
+            index++;
+        });     
+    });  
+    return data;
 }
 
 module.exports = datasourceModel;

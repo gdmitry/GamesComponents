@@ -5,48 +5,44 @@ var React = require('react'),
 	Spinner = require('../spinner/spinner');	
 
 var Button = React.createClass({	
-			labels: {'play': 'Play', 'download': 'Download', 'loading': 'Downloading...'},
-			getInitialState: function() {
-    			return {gameState: '', gameUrl: ''};
-  			},
-			componentDidMount: function () {
+			labels: {
+				'play': 'Play',
+				'download': 'Download',
+				'loading': 'Downloading...'
+			},		  				
+			componentDidMount: function () {				
   				this.refs.downloadButton.addEventListener('click', this.handleClick, false);
-  				Core.listen('game-info-change', this.updateContent);	
 			},
 			componentWillUnmount: function () {
   				this.refs.downloadButton.removeEventListener('click', this.handleClick, false);
-  				Core.unlisten('game-info-change', this.updateContent);	
 			},
 			handleClick: function () {
-				if (this.state.gameState === 'play') {
-					console.info('open link in new tab');
-					window.open(this.state.gameUrl);
-					return;
-				}
-				if (this.state.gameState === 'download') {
-					console.info('download the game');
-					Core.emit('game-info-update', {gameId: this.props.gameId, state: "loading"});
-				}  				  				
-			},	
-			updateContent: function (event) {  		
-  				var game = event.detail;
-  				if (game.gameId === this.props.gameId && this.isMounted()) {
-  					game.state = game.state ||'download';
-					this.setState({gameState: game.state, gameUrl: game.gameUrl});  
-  				}					  			 			
-			},				
+				var gameState = this.props.gameState;
+				switch (gameState) {
+					case 'play': 
+						console.info('open link in new tab');
+						window.open(this.props.gameUrl);
+						break;					
+					case undefined:
+					case 'download': 
+						console.info('download the game');
+						Core.emit('game-info-update', {gameId: this.props.gameId, state: "loading"});
+						break;					
+				}							  				
+			},							
 			render: function () {
+				var buttonText = this.labels[this.props.gameState || 'download'];
 				var classes = classSet({
 					'download-button': true,
         			'size-small': this.props.size === 'small',
         			'size-small': !this.props.size,
-        			'active': this.state.gameState === 'play',
-        			'play': this.state.gameState === 'play',
-        			'download': this.state.gameState === 'download',
-        			'loading': this.state.gameState === 'loading'
+        			'active': this.props.gameState === 'play',
+        			'play': this.props.gameState === 'play',
+        			'download': this.props.gameState === 'download' || !this.props.gameState,
+        			'loading': this.props.gameState === 'loading'
     			});
-				return (<div className = {classes} ref="downloadButton">{this.labels[this.state.gameState]}
-							<Spinner/>
+				return (<div className = {classes} ref="downloadButton">{buttonText}
+							<Spinner status={this.props.gameState === 'loading' ? 'active' : ''} />
 				 		</div> );
 				}
 			});

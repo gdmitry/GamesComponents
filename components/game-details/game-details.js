@@ -27,8 +27,8 @@ var GameDetails= React.createClass({
 					<div className="game-title">{this.state.game.title}</div>
 					<div className="jackpot">{this.state.game.jackpot ? "Jackpot: " + this.state.game.jackpot : ""}</div>
 					<div className="game-description">{this.state.game.longDescription}</div>
-					<DownloadButton gameId = {this.props.params.gameId} size={'large'}/>
-					<DeleteButton gameId = {this.props.params.gameId} size={'large'}/>
+					<DownloadButton gameId = {this.state.game.gameId} gameState = {this.state.game.state} size={'large'}/>
+					<DeleteButton gameId = {this.state.game.gameId} gameState = {this.state.game.state}  gameUrl = {this.state.game.gameUrl} size={'large'}/>
 				</div>	
 			</div>	
 		</div>);

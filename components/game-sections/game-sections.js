@@ -14,11 +14,13 @@ var GameSections = React.createClass({
 			},	
 			updateContent: function(event) {
 				var sections = event.detail;				
-				if (this.isMounted()) {
+				if (this.isMounted()) {				
+					
 					this.setState({sections: sections});
 				}								
 			},
 			render: function () {
+
 				var sections = this.state.sections.map(function (section, index) {
 					return ( <GameSection section = { section } key = { index }/>);
 				});

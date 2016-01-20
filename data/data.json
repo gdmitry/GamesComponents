@@ -10,7 +10,8 @@
 				"gameUrl": "https://github.com",
 				"longDescription": "Give this magical 3D slot a spin and embark on a journey like no other. Step inside an enchanted forest offering winnings at every turn, but watch out for the thieving goblins that are out to steal everything you have. If you’re looking for back up, the elves are there to help, giving you opportunities to increase your earnings by offering you free spins and chances to trigger the progressive jackpot. If you haven’t already guessed it by now, this isn’t your average fairytale. Trek through the woods with the elves by your side and don’t let the goblins get in your way of becoming the next big winner.",
 				"jackpot": "2000",
-				"description":"Nine chances to win big money."
+				"description":"Nine chances to win big money.",
+				"state": "play"
 			},
 			{
 				"gameId": "id_Deal_or_No_Deal",

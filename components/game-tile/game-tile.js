@@ -4,25 +4,32 @@ var React = require('react'),
 	Link = require('react-router').Link;	
 
 var GameTile = React.createClass({	
+	getInitialState: function() {
+		return {data: this.props.data};
+  	},
 	componentDidMount: function () {
   		var element = ReactDOM.findDOMNode(this);
- 		var infoButton = element.querySelectorAll('.info-button')[0];
- 		Core.emit('game-info-change', this.props.data);	
+ 		var infoButton = element.querySelectorAll('.info-button')[0]; 	
+ 		
 	},		
-	render: function () {		
+	componentWillReceiveProps: function () {
+		//console.log("fuck");
+  		//this.setState({data: this.props.data});
+	},		
+	render: function () {
 		return (<tile className = "game-tile small-size">
 				<div className="game-summary"> 
-					<image className="game-image" src = {this.props.data.imageUrl} />
-					<div className="game-title">{this.props.data.title}</div>
-					<div className="jackpot">{this.props.data.jackpot ? "Jackpot: "+this.props.data.jackpot : ""}</div>
+					<image className="game-image" src = {this.state.data.imageUrl} />
+					<div className="game-title">{this.state.data.title}</div>
+					<div className="jackpot">{this.state.data.jackpot ? "Jackpot: "+this.state.data.jackpot : ""}</div>
 				</div>
 				<div className="game-info"> 
-					<div className="game-title">{this.props.data.title}</div>								
-					<div className="jackpot">{this.props.data.jackpot ? "Jackpot: "+this.props.data.jackpot : ""}</div>
+					<div className="game-title">{this.state.data.title}</div>								
+					<div className="jackpot">{this.state.data.jackpot ? "Jackpot: "+this.state.data.jackpot : ""}</div>
 					<div className="description">Nine chances to win big money.</div>
 					<div className="controls">
-						<DownloadButton gameId = {this.props.data.gameId} />
-						<Link to={`/details/${this.props.data.gameId}`}><div className="info-button">i</div></Link>
+						<DownloadButton gameId = {this.state.data.gameId} gameState = {this.state.data.state} gameUrl = {this.state.data.gameUrl}/>
+						<Link to={`/details/${this.state.data.gameId}`}><div className="info-button">i</div></Link>
 					</div>
 				</div>
 		</tile>);

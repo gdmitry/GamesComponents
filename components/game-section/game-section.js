@@ -2,7 +2,7 @@ var React = require('react'),
 	GameTile = require('../game-tile/game-tile');
 
 var GameSection = React.createClass({	 	
-			render: function () {
+			render: function () {				
 				var games = this.props.section.games.map(function (game, index) {
 					return ( <GameTile data = { game } key = { index }/>);
 				});

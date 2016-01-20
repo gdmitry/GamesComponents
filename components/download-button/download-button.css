@@ -16,8 +16,7 @@
 }
 
 .download-button  .spinner-wrapper {	
-	right: 10px;
-	display: none;
+	right: 10px;	
 }
 
 .download-button.size-small {	
@@ -47,10 +46,6 @@
 	background: #5161f7;
 	text-align: left;
 	padding-left: 10px;
-}
-
-.download-button.loading .spinner-wrapper {	
-	display: block;
 }
 
 .download-button.size-small .spinner-wrapper{	

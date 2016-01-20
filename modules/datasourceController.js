@@ -3,7 +3,7 @@ var datasourceModel = require('./datasourceModel.js'),
 
 Core.listen('sections-data-request', function() {
 	dataPromise.then(function() {
-		Core.emit('sections-data-change', datasourceModel.sections);
+		Core.emit('sections-data-change', datasourceModel.sections);       
 	});   
 });
 
@@ -16,6 +16,7 @@ Core.listen('game-info-update', function(event) {
     var details = event.detail;
     datasourceModel.updateGame(details);  
     Core.emit('game-info-request', details);
+    Core.emit('sections-data-request');     
 });
 
 // mock play state
