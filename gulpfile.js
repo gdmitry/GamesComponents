@@ -31,7 +31,8 @@ gulp.task('watch',['server','build'], function () {
 	gulp.watch(['components/**/*.js','modules/**/*.js', 'components/**/*.jsx'], ['scripts']);
 	gulp.watch(['components/**/*.css'], ['css']);
 	gulp.watch(['images/**/*.*'], ['images']);
-	gulp.watch(['data/data.json','db.json'], ['templates']);
+	gulp.watch(['fonts/**/*.*'], ['fonts']);
+	gulp.watch(['data/data.json'], ['json']);
 });
 
 gulp.task('templates', function () {
@@ -56,8 +57,16 @@ gulp.task('images', function () {
 
 gulp.task('fonts', function () {
 	return gulp.src('fonts/*')
-		.pipe(gulp.dest('./build/fonts'));
+		.pipe(gulp.dest('./build/fonts'))
+		.pipe(connect.reload());
 });
+
+gulp.task('json', function () {
+	return gulp.src('data/*')
+		.pipe(gulp.dest('./build/data'))
+		.pipe(connect.reload());
+});
+
 
 gulp.task('clean', function () {
 	return gulp.src('./build')
