@@ -7,3 +7,6 @@ List of games and Game info
 
 # Mocking data in json
 For the purpose JSON server is used https://github.com/typicode/json-server
+
+Start JSON Server:
+**json-server --watch db.json**
