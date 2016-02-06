@@ -1,6 +1,6 @@
 var React = require('react'),
-DownloadButton = require('../download-button/download-button'),
-DeleteButton = require('../delete-button/delete-button');
+DownloadButton = require('../download-button/download-button.jsx'),
+DeleteButton = require('../delete-button/delete-button.jsx');
 
 var GameDetails= React.createClass({	
 	getInitialState: function() {
@@ -30,7 +30,7 @@ var GameDetails= React.createClass({
 					<DownloadButton gameId = {this.state.game.gameId} gameState = {this.state.game.state} size={'large'}/>
 					<DeleteButton gameId = {this.state.game.gameId} gameState = {this.state.game.state}  gameUrl = {this.state.game.gameUrl} size={'large'}/>
 				</div>	
-			</div>	
+			</div>			
 		</div>);
 	}
 });

@@ -11,9 +11,10 @@ var gulp = require('gulp'),
 	plugin = require('./plugin/tasks/plugin'),
 	connect = require('gulp-connect'),
 	changed = require('gulp-changed');
+	
 
 gulp.task('scripts', function () {
-	gulp.src('components/main/main.js')
+	gulp.src('components/main/main.jsx')
 		.pipe(browserify({
 			insertGlobals: false,
 			debug: true,
@@ -29,6 +30,8 @@ gulp.task('scripts', function () {
 gulp.task('watch',['server','build'], function () {
 	gulp.watch(['components/**/*.js','modules/**/*.js', 'components/**/*.jsx'], ['scripts']);
 	gulp.watch(['components/**/*.css'], ['css']);
+	gulp.watch(['images/**/*.*'], ['images']);
+	gulp.watch(['data/data.json','db.json'], ['templates']);
 });
 
 gulp.task('templates', function () {

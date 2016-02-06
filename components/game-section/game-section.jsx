@@ -1,5 +1,5 @@
 var React = require('react'),	
-	GameTile = require('../game-tile/game-tile');
+	GameTile = require('../game-tile/game-tile.jsx');
 
 var GameSection = React.createClass({	 	
 			render: function () {				

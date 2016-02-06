@@ -1,5 +1,5 @@
 var React = require('react'),	
-	GameSection= require('../game-section/game-section');
+	GameSection= require('../game-section/game-section.jsx');
 
 var GameSections = React.createClass({			
 	 		getInitialState: function() { 
@@ -13,9 +13,9 @@ var GameSections = React.createClass({
   				Core.unlisten('sections-data-change', this.updateContent);	
 			},	
 			updateContent: function(event) {
-				var sections = event.detail;				
+				var sections = event.detail;
+				console.log(sections);				
 				if (this.isMounted()) {				
-					
 					this.setState({sections: sections});
 				}								
 			},

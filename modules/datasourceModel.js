@@ -3,12 +3,16 @@ var datasourceModel = {};
 datasourceModel.sections = [];
 datasourceModel.games = {};
 
-function request(url) {
+function request(url, headers) {
     return new Promise(
         function(resolve, reject) {
             var xhr = new XMLHttpRequest();
             try {
                 xhr.open('GET', url, true);
+                xhr.timeout = 10000;
+                for (var header in headers) {
+                    xhr.setRequestHeader(header, headers[header]);
+                }
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.setRequestHeader('Accept', '*/*');
                 xhr.onreadystatechange = function() {

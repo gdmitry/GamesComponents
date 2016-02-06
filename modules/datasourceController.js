@@ -1,8 +1,9 @@
 var datasourceModel = require('./datasourceModel.js'),
-	dataPromise = datasourceModel.loadData('../data/data.json');
+	dataPromise = datasourceModel.loadData('http://localhost:3000/sections');
+    //dataPromise = datasourceModel.loadData('../data/data.json');
 
 Core.listen('sections-data-request', function() {
-	dataPromise.then(function() {
+	datasourceModel.loadData('http://localhost:3000/sections').then(function() {
 		Core.emit('sections-data-change', datasourceModel.sections);       
 	});   
 });

@@ -2,7 +2,7 @@ var React = require('react'),
 	ReactDOM = require('react-dom'),
 	addons = require('react-addons'), 
 	classSet = addons.classSet,
-	Spinner = require('../spinner/spinner');	
+	Spinner = require('../spinner/spinner.jsx');	
 
 var Button = React.createClass({	
 			labels: {

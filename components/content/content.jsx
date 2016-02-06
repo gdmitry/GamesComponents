@@ -1,6 +1,6 @@
 var React = require('react'),
-	Header = require('../header/header.js'),
-	Footer = require('../footer/footer.js');
+	Header = require('../header/header.jsx'),
+	Footer = require('../footer/footer.jsx');
 
 var Template = React.createClass({		
 	render: function () {	
